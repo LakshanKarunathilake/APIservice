@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: api-service-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: api-service
+    spec: # pod spec
+      containers:
+        - name: api-service
+          image: gcr.io/docker-239515/api-service # image we pushed
+          ports:
+            - containerPort: 3000
